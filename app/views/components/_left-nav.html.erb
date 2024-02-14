@@ -20,10 +20,17 @@
   </ul>
 
   <ul class="mt-8">
-    <li class="hover:bg-blue-900 border-x-2 flex justify-center">
-      <%= link_to new_user_session_path, class: "text-green-300" do %>
-        Account
-      <% end %>
-    </li>
+    <% unless user_signed_in? %>
+      <li class="hover:bg-blue-900 border-x-2 flex justify-center">
+        <%= link_to new_user_session_path, class: "text-green-300" do %>
+          Login
+        <% end %>
+      </li>
+      <li class="hover:bg-blue-900 border-x-2 flex justify-center">
+        <%= link_to new_user_registration_path, class: "text-green-300" do %>
+          Register
+        <% end %>
+      </li>
+    <% end %>
   </ul>
 </nav>
