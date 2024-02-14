@@ -1,0 +1,29 @@
+<nav>
+  <h4 class="text-green-400 text-center mb-8">
+    Categories
+  </h4>
+
+  <ul>
+    <li class="hover:bg-blue-900 border-x-2 flex justify-center">
+      <%= link_to root_path, class: "text-orange-300" do %>
+        Latest
+      <% end %>
+    </li>
+    <% Category.all.each do |category| %>
+      <li class="hover:bg-blue-900 border-x-2 flex justify-center">
+
+        <%= link_to articles_path(category: category.name), class: "text-blue-400" do %>
+          <%= category.name %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+  <ul class="mt-8">
+    <li class="hover:bg-blue-900 border-x-2 flex justify-center">
+      <%= link_to new_user_session_path, class: "text-green-300" do %>
+        Account
+      <% end %>
+    </li>
+  </ul>
+</nav>

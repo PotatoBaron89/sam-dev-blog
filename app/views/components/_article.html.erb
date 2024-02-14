@@ -1,0 +1,24 @@
+<div class=" border-y-2 my-3 border-blue-300 p-3 ml-8">
+  <div class="flex flex-row justify-around w-full">
+    <h3 class="">
+      <%= article.name %>
+    </h3>
+
+    <div class="text-sm text-gray-300 font-semibold">
+      <%= article.created_at.strftime("%d/%m/%Y") %>
+    </div>
+  </div>
+
+
+  <div>
+    <% article.categories.each do |category| %>
+      <span class="<%= category.colour %> text-white p-1 rounded">
+        <%= category.name %>
+      </span>
+    <% end %>
+  </div>
+
+  <p>
+    <%= article.content %>
+  </p>
+</div>
