@@ -13,6 +13,7 @@ gem "cssbundling-rails"
 
 gem 'devise'
 gem 'pagy'
+gem 'countries', require: 'countries/global'
 
 # Use postgresql as the database for Active Record
 # DB
@@ -22,6 +23,11 @@ gem 'pg_query'
 gem 'pg_search', '~> 2.3'
 gem 'pgslice'
 gem 'scenic'
+
+
+# Permissions
+
+gem 'cancancan'
 
 
 # Caching

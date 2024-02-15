@@ -8,14 +8,31 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
+    <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
   </head>
 
   <body>
     <h1 class="mb-12 text-center">Sam O'Donnell's Dev Blog</h1>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice.present? %>
+      <div class="flex flex-col justify-center items-center">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
 
-    <%= yield %>
+    <% if alert.present? %>
+      <div class="flex flex-col justify-center items-center">
+        <p class="notice-alert"><%= alert %></p>
+      </div>
+    <% end %>
+
+    <div class="grid grid-cols-5 gap-4">
+      <%= render 'components/left-nav' %>
+      <div class="col-span-4">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "components/trix";
 
 .bg-blue-300 { background-color: #90cdf4; }
 .bg-yellow-300 { background-color: #f6e05e; }
@@ -10,8 +11,22 @@
 .bg-fuchsia-300 { background-color: #f687b3; }
 
 @layer components {
+    /*OVERRIDES*/
+
     body {
-        @apply bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 p-3 font-sans;
+        @apply bg-primary text-gray-900 dark:text-gray-100 p-3 font-sans;
+    }
+
+    select {
+        @apply bg-form border-2 rounded-xl border-blue-200 p-1 mx-2 w-fit;
+    }
+
+    label {
+        @apply p-1 ml-5;
+    }
+
+    input {
+        @apply bg-form border-2 rounded-xl border-blue-200 p-1 mx-2;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -28,6 +43,82 @@
     p { @apply text-base pb-3; }
     a { @apply font-semibold light-text-interactive; }
 
+    /*BACKGROUNDS*/
+
+    .bg-primary { @apply bg-gray-100 dark:bg-gray-900; }
+    .bg-secondary { @apply bg-gray-200 dark:bg-gray-800; }
+    .bg-accent { @apply bg-yellow-300 dark:bg-yellow-400; }
+    .bg-form { @apply bg-white dark:bg-sky-900 text-gray-700 dark:text-gray-100; }
+
+    /*BORDERS*/
+
+    .light-border { @apply border-y-2 border-blue-300 dark:border-gray-700; }
+    .dark-border { @apply border-y-2 border-gray-700; }
+
+    /* BUTTONS */
+
+    .panel-primary { @apply bg-form border-2 rounded-xl border-blue-400 p-1 mx-2;}
+
+    .btn-primary {
+        @apply cursor-pointer bg-blue-300 text-white dark:text-gray-900 rounded-xl border-spacing-1 border-2 border-blue-100 w-fit px-3 py-1;
+        transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
+
+        &:hover,
+        &:focus {
+            @apply bg-blue-400 cursor-pointer;
+        }
+    }
+
+    .btn-secondary {
+        @apply cursor-pointer bg-gray-300 text-white dark:text-gray-900 rounded-xl border-spacing-1 border-2 border-gray-100 w-fit px-3 py-1;
+        transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
+
+        &:hover,
+        &:focus {
+            @apply bg-gray-400 cursor-pointer;
+        }
+    }
+
+    .btn-accent {
+        @apply cursor-pointer bg-yellow-300 text-white dark:text-gray-900 rounded-xl border-spacing-1 border-2 border-yellow-100 w-fit px-3 py-1;
+        transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
+
+        &:hover,
+        &:focus {
+            @apply bg-yellow-400 cursor-pointer;
+        }
+    }
+
+    .btn-panel { @apply cursor-pointer flex justify-center px-3 py-1; }
+    .btn-panel-primary {
+        @apply  btn-panel text-white dark:text-gray-900 ;
+        transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
+
+        &:hover,
+        &:focus { @apply bg-blue-900  cursor-pointer; }
+    }
+
+    .btn-panel-accent {
+        @apply btn-panel text-white dark:text-gray-900;
+        transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
+
+        &:hover,
+        &:focus { @apply bg-yellow-400 cursor-pointer; }
+    }
+
+    .btn-panel-accent {
+        @apply btn-panel text-white dark:text-gray-900;
+        transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
+
+        &:hover,
+        &:focus { @apply bg-yellow-400 cursor-pointer; }
+    }
+
+    /*FIELDS*/
+
+    .form_container { @apply bg-form lg:mx-12 md:mx-6 sm:mx-3 flex flex-col items-center border-2 rounded-xl border-blue-50 p-1 mx-2; }
+    .form_field { @apply lg:w-2/3 md:w-4/5 flex my-auto justify-between lg:gap-12 md:gap-4 sm:gap-3; }
+
     /*COLOURS*/
 
     .light-text { @apply text-gray-100 dark:text-gray-500; }
@@ -36,12 +127,19 @@
         transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
 
         &:hover,
-        &:focus {
-            @apply cursor-pointer text-white dark:text-gray-400;
-        }
+        &:focus { @apply cursor-pointer text-white dark:text-gray-400; }
     }
 
-    /*BACKGROUNDS*/
+    /*NOTICES*/
 
+    .notice {
+        @apply lg:w-1/2 md:w-1/3 bg-green-300 text-white dark:text-gray-900 rounded-xl border-spacing-1 border-2 border-green-200 py-3 px-5 py-1 mb-8 text-center;
+        transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
+    }
+
+    .notice-alert {
+        @apply lg:w-1/2 md:w-1/3 bg-red-300 text-white dark:text-gray-900 rounded-xl border-spacing-1 border-2 border-red-200 py-3 px-5 py-1 mb-8 text-center;
+        transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
+    }
 }
 @import 'actiontext.css';

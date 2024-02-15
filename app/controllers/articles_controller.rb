@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :check_user_signed_in?, except: [:index, :show]
+
   def index
     query = Article.order(created_at: :desc)
     query = Article.joins(:categories).where(categories: {name: params[:category]}) if params[:category].present?
@@ -10,6 +12,8 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @article = Article.find(params[:id])
+    authorize! :edit, @article
   end
 
   def update

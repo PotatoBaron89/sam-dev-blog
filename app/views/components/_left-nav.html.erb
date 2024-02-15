@@ -1,34 +1,49 @@
-<nav>
-  <h4 class="text-green-400 text-center mb-8">
+<nav class="panel-primary min-w-36">
+  <h4 class="text-blue-800 text-center mt-3 mb-8">
     Categories
   </h4>
 
-  <ul>
-    <li class="hover:bg-blue-900 border-x-2 flex justify-center">
-      <%= link_to root_path, class: "text-orange-300" do %>
+  <ul class="light-border mx-3">
+    <li class="btn-panel-accent flex justify-center">
+      <%= link_to root_path, class: "text-black" do %>
         Latest
       <% end %>
     </li>
     <% Category.all.each do |category| %>
-      <li class="hover:bg-blue-900 border-x-2 flex justify-center">
+      <li class="btn-panel-primary flex justify-center">
 
-        <%= link_to articles_path(category: category.name), class: "text-blue-400" do %>
+        <%= link_to articles_path(category: category.name), class: "text-blue-300" do %>
           <%= category.name %>
         <% end %>
       </li>
     <% end %>
   </ul>
 
-  <ul class="mt-8">
+  <ul class="light-border mb-3 mt-8 mx-3">
+  <!--           If User is NOT signed in           -->
     <% unless user_signed_in? %>
-      <li class="hover:bg-blue-900 border-x-2 flex justify-center">
-        <%= link_to new_user_session_path, class: "text-green-300" do %>
+      <li class="btn-panel-accent">
+        <%= link_to new_user_session_path, class: "text-black" do %>
           Login
         <% end %>
       </li>
-      <li class="hover:bg-blue-900 border-x-2 flex justify-center">
-        <%= link_to new_user_registration_path, class: "text-green-300" do %>
+      <li class="btn-panel-accent">
+        <%= link_to new_user_registration_path, class: "text-black" do %>
           Register
+        <% end %>
+      </li>
+    <% end %>
+
+    <!--           If User IS signed in           -->
+    <% if user_signed_in? %>
+      <li class="btn-panel-accent">
+        <%= link_to profile_path, class: "text-black" do %>
+          My Profile
+        <% end %>
+      </li>
+      <li class="btn-panel-accent">
+        <%= button_to destroy_user_session_path, method: :delete, class: "text-black" do %>
+          Logout
         <% end %>
       </li>
     <% end %>

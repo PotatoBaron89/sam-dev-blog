@@ -119,6 +119,7 @@ GEM
     brakeman (6.1.2)
       racc
     builder (3.2.4)
+    cancancan (3.5.0)
     capybara (3.40.0)
       addressable
       matrix
@@ -136,6 +137,8 @@ GEM
     colorize (1.1.0)
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
+    countries (5.7.1)
+      unaccent (~> 0.3)
     crass (1.0.6)
     cssbundling-rails (1.4.0)
       railties (>= 6.0.0)
@@ -407,6 +410,7 @@ GEM
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2024.1)
       tzinfo (>= 1.0.0)
+    unaccent (0.4.0)
     unicode-display_width (2.5.0)
     view_component (3.10.0)
       activesupport (>= 5.2.0, < 8.0)
@@ -446,10 +450,12 @@ DEPENDENCIES
   binding_of_caller
   bootsnap (>= 1.4.2)
   brakeman
+  cancancan
   capybara
   chart-js-rails
   chartkick
   colorize
+  countries
   cssbundling-rails
   debug
   devise

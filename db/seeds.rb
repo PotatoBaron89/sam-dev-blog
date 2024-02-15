@@ -8,6 +8,10 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+sam = User.find_or_initialize_by(email: 'samboy29@gmail.com')
+sam.password = 'potato'
+sam.password_confirmation = 'potato'
+sam.save!
 
 ror = Category.find_or_create_by!(name: 'Ruby on Rails', colour: 'bg-blue-300')
 dev_ops = Category.find_or_create_by!(name: 'Dev Ops', colour: 'bg-yellow-300')
@@ -19,3 +23,9 @@ ror_article.update!(content: 'Ruby on Rails is a web application framework writt
 
 postgres_article = postgres.articles.find_or_create_by!(name: 'Postgres Placeholder')
 postgres_article.update!(content: 'PostgreSQL, also known as Postgres, is a free and open-source relational database management system emphasizing extensibility and SQL compliance. It was originally named POSTGRES, referring to its origins as a successor to the Ingres database developed at the University of California, Berkeley. In 1996, the project was renamed to PostgreSQL to reflect its support for SQL. After a review in 2007, the development team decided to keep the name PostgreSQL and the alias Postgres.')
+
+admin_role = Role.find_or_create_by!(name: 'Admin')
+registered_user_role = Role.find_or_create_by!(name: 'Registered User')
+
+sam.roles << admin_role unless sam.roles.include?(admin_role)
+sam.roles << registered_user_role unless sam.roles.include?(registered_user_role)
