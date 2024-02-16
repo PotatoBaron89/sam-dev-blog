@@ -1,3 +1,7 @@
 <%= turbo_frame_tag "article", class: "col-span-4" do %>
   <%= render partial: "components/article", collection: @articles.limit(10), cached: true %>
 <% end %>
+
+<div class="text-primary-200">
+  Foo
+</div>
