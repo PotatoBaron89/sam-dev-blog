@@ -11,7 +11,12 @@ Rails.application.routes.draw do
   get 'profile/settings'
   patch 'profile/update'
 
-  resources :articles
+  resources :articles do
+    member do
+      get 'show_card'
+      post 'favourite'
+    end
+  end
 
   get "up" => "rails/health#show", as: :rails_health_check
 

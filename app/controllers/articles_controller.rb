@@ -3,12 +3,17 @@ class ArticlesController < ApplicationController
 
   def index
     query = Article.order(created_at: :desc)
-    query = Article.joins(:categories).where(categories: {name: params[:category]}) if params[:category].present?
+    query = Article.where(categories: {name: params[:category]}) if params[:category].present?
 
     @pagy, @articles = pagy(query, items: 10)
   end
 
   def show
+    @article = Article.find(params[:id])
+  end
+
+  def show_card
+    @article = Article.find(params[:id])
   end
 
   def edit
@@ -17,8 +22,27 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    @article = Article.find(params[:id])
+    authorize! :update, @article
+
+    @article.update(article_params)
+    redirect_to article_path(@article)
+  end
+
+  def favourite
+    @article = Article.find(params[:id])
+    authorize! :read, @article
+
+    current_user.favourite_articles << @article
+    redirect_to article_path(@article)
   end
 
   def destroy
+  end
+
+  protected
+
+  def article_params
+    params.require(:article).permit(:name, :content, :archived, :featured)
   end
 end

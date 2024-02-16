@@ -4,6 +4,7 @@
 
 
 
+
 .bg-blue-300 { background-color: #90cdf4; }
 .bg-yellow-300 { background-color: #f6e05e; }
 .bg-red-300 { background-color: #fc8181; }
@@ -43,7 +44,7 @@
     h6 { @apply text-base; }
 
     p { @apply text-base pb-3; }
-    a { @apply font-semibold light-text-interactive; }
+    a { @apply font-semibold dark-text-interactive; }
 
     /*BACKGROUNDS*/
 
@@ -124,12 +125,20 @@
     /*COLOURS*/
 
     .light-text { @apply text-gray-100 dark:text-gray-500; }
+    .dark-text { @apply text-gray-900 dark:text-gray-100; }
     .light-text-interactive {
         @apply text-gray-100 dark:text-gray-500;
         transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
 
         &:hover,
         &:focus { @apply cursor-pointer text-white dark:text-gray-400; }
+    }
+    .dark-text-interactive {
+        @apply text-gray-900 dark:text-gray-100;
+        transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
+
+        &:hover,
+        &:focus { @apply cursor-pointer; }
     }
 
     /*NOTICES*/
@@ -148,5 +157,10 @@
 
     .article-image {
         @apply absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover;
+    }
+
+    .shrink-pulse {
+        @apply transition duration-1000 ease-in-out;
+        transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
     }
 }

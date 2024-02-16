@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   has_many :user_roles, dependent: :destroy, inverse_of: :user
   has_many :roles, -> { where(archived: false) }, through: :user_roles, inverse_of: :users
+  has_many :favourite_articles_joins, dependent: :destroy, inverse_of: :user, class_name: 'FavouritedArticle'
+  has_many :favourite_articles, through: :favourite_articles_joins, source: :article
 
   def can?(action, subject, *extra_args)
     ability.can?(action, subject, *extra_args)
@@ -22,6 +24,10 @@ class User < ApplicationRecord
     ability.cant?(action, subject, *extra_args)
   end
   alias :cannot? :cant?
+
+  def admin?
+    roles.any? { |role| role.name == 'Admin' }
+  end
 
   protected
 
