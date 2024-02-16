@@ -10,6 +10,7 @@
 .bg-green-300 { background-color: #68d391; }
 .bg-purple-300 { background-color: #d6bcfa; }
 .bg-fuchsia-300 { background-color: #f687b3; }
+.bg-cyan-300 { background-color: #63b3ed; }
 
 @layer components {
     /*OVERRIDES*/
@@ -58,7 +59,7 @@
 
     /* BUTTONS */
 
-    .panel-primary { @apply bg-form border-2 rounded-xl border-blue-400 p-1 mx-2;}
+    .panel-primary { @apply bg-form rounded-xl shadow p-1 mx-2;}
 
     .btn-primary {
         @apply cursor-pointer bg-blue-300 text-white dark:text-gray-900 rounded-xl border-spacing-1 border-2 border-blue-100 w-fit px-3 py-1;

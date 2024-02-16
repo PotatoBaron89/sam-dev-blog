@@ -4,4 +4,12 @@ class Article < ApplicationRecord
 
   has_rich_text :content
   has_one_attached :card_image
+
+  def get_image_url
+    if card_image.attached?
+      Rails.application.routes.url_helpers.rails_blob_path(card_image, only_path: true)
+    else
+      self.categories.first.get_image_url
+    end
+  end
 end

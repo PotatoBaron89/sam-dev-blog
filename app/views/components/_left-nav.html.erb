@@ -1,11 +1,11 @@
-<nav class="panel-primary min-w-36">
-  <h4 class="text-blue-800 text-center mt-3 mb-8">
+<nav class="ml-6 panel-primary min-w-36">
+  <h4 class="text-center mt-3 mb-8">
     Categories
   </h4>
 
-  <ul class="light-border mx-3">
+  <ul class="mx-3">
     <li class="btn-panel-accent flex justify-center">
-      <%= link_to root_path, class: "text-black" do %>
+      <%= link_to root_path, class: "text-gray-800" do %>
         Latest
       <% end %>
     </li>
@@ -19,7 +19,7 @@
     <% end %>
   </ul>
 
-  <ul class="light-border mb-3 mt-8 mx-3">
+  <ul class="mb-3 mt-8 mx-3">
   <!--           If User is NOT signed in           -->
     <% unless user_signed_in? %>
       <li class="btn-panel-accent">

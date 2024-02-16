@@ -17,6 +17,25 @@ module ApplicationHelper
     end
   end
 
+  def top_nav_account_elements
+    if user_signed_in?
+      [
+        { name: 'Profile', path: profile_path, method: :get },
+        { name: 'Logout', path: destroy_user_session_path, method: :delete }
+      ]
+    else
+      [
+        { name: 'Login', path: new_user_session_path, method: :get },
+        { name: 'Register', path: new_user_registration_path, method: :get }
+      ]
+    end
+  end
+  def top_nav_article_elements
+    Category.all.map do |category|
+      { name: category.name, path: articles_path(category: category.name), method: :get }
+    end
+  end
+
   def country_list
     Country.all.map { |country| country.translations['en'] }
   end

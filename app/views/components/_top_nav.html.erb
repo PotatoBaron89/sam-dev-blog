@@ -1,0 +1,19 @@
+<header class="bg-gray-900 text-white shadow rounded-xl m-5">
+  <div class="flex flex-col justify-center items-center">
+    <div class="relative w-full">
+      <h1 class="mb-3 p-2 text-center">Dev Blog</h1>
+      <div class="absolute right-0 top-0 p-3 font-bold">
+        Samuel O'Donnell
+      </div>
+    </div>
+
+    <nav class="flex flex-wrap gap-3 rounded-full m-3">
+      <div class="rounded-full m-3 text-gray-100 h-6 flex justify-center items-center">
+        Home
+      </div>
+      <div class="rounded-full m-3 text-gray-100 h-6 flex justify-center items-center">
+        <%= render partial: "components/dropdown_button", locals: { collection: collection } %>
+      </div>
+    </nav>
+  </div>
+</header>

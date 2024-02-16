@@ -1,9 +1,6 @@
 <!--NOTE: Sidebar is shown-->
 
-<!--ARTICLES -->
+<%= turbo_frame_tag "article", class: "col -span-4" do %>
 
-<%= turbo_frame_tag "article", class: "col-span-4" do %>
-  <%= render partial: "components/article", collection: @articles.limit(10), cached: true %>
-
-  <%= render partial: "components/news_letter" %>
+  <%= render partial: "components/article_cards" %>
 <% end %>
