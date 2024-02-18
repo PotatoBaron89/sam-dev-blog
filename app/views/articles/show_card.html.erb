@@ -1,5 +1,5 @@
 
-<%= turbo_frame_tag "article-#{@article.id}" do %>
+<%= turbo_frame_tag "article-#{@article.id}", data: {turbo_action: "advance_params"} do %>
   <article class="relative isolate flex flex-col gap-3 lg:flex-row rounded-xl shadow p-1">
     <div class="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
       <%= image_tag @article.get_image_url, class: "article-image" %>
@@ -9,13 +9,13 @@
 
     <% if current_user&.admin? %>
       <div class="absolute right-8 top-3 px-2 flex gap-2 hover:bg-blue-400 rounded-xl min-w-12">
-        <%= link_to "Edit", edit_article_path(@article), class: "text-gray-600" %>
+        <%= link_to "Edit", edit_article_path(@article), data: { turbo_action: "advance"}, class: "text-gray-600" %>
       </div>
     <% end %>
 
     <div>
       <div class="flex items-center gap-x-4 text-xs">
-        <time datetime="2020-03-16" class="text-gray-500">
+        <time datetime="2020-03-16" class="text-gray-500 dark:text-gray-100">
           <%= @article.created_at.strftime("%d/%m/%Y") %>
         </time>
 
@@ -28,7 +28,7 @@
 
       <div class="group relative max-w-xl mt-3">
         <h3 class="">
-          <%= link_to @article.name, article_path(@article) %>
+          <%= link_to @article.name, article_path(@article), data: { turbo_action: "advance" } %>
         </h3>
 
         <p class="mt-5 text-sm leading-6 text-gray-600">

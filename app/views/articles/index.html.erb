@@ -1,3 +1,5 @@
-<%= turbo_frame_tag "article", class: "col-span-4" do %>
-  <%= render partial: "components/article", collection: @articles.limit(10), cached: true %>
+<%= turbo_frame_tag "article", class: "flex flex-col gap-3" do %>
+  <div class="m-12">
+  <%= render partial: "components/article_cards", collection: @articles, cached: true, data: { turbo_action: "advance" } %>
+  </div>
 <% end %>

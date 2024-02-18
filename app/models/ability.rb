@@ -13,6 +13,12 @@ class Ability
         can :read, :article
         can :read, :category, archived: false
         can :read, :user, id: user.id
+
+        can :read, :comment, archived: false
+        can :create, :comment, commenter_id: user.id
+        can :update, :comment, commenter_id: user.id
+        can :archive, :comment, commenter_id: user.id
+        can :destroy, :comment, commenter_id: user.id
       end
     end
   end

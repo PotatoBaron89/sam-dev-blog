@@ -3,6 +3,10 @@ class Article < ApplicationRecord
   has_many :categories, through: :category_article_joins, inverse_of: :articles
   has_many :favourite_articles_joins, dependent: :destroy, inverse_of: :article, class_name: 'FavouritedArticle'
 
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :archived_comments, -> { where(archived: true) }, as: :commentable, class_name: 'Comment'
+
+
   has_rich_text :content
   has_one_attached :card_image
 

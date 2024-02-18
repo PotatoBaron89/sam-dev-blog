@@ -32,6 +32,8 @@
         @apply bg-form border-2 rounded-xl border-blue-200 p-1 mx-2;
     }
 
+    hr { @apply w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700; }
+
     h1, h2, h3, h4, h5, h6 {
         @apply font-semibold pb-3 ml-5;
     }
@@ -43,7 +45,7 @@
     h5 { @apply text-lg; }
     h6 { @apply text-base; }
 
-    p { @apply text-base pb-3; }
+    p { @apply text-base mb-3 text-gray-500 dark:text-gray-400; }
     a { @apply font-semibold dark-text-interactive; }
 
     /*BACKGROUNDS*/
@@ -63,7 +65,7 @@
     .panel-primary { @apply bg-form rounded-xl shadow p-1 mx-2;}
 
     .btn-primary {
-        @apply cursor-pointer bg-blue-300 text-white dark:text-gray-900 rounded-xl border-spacing-1 border-2 border-blue-100 w-fit px-3 py-1;
+        @apply cursor-pointer inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800;
         transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
 
         &:hover,
@@ -124,17 +126,17 @@
 
     /*COLOURS*/
 
-    .light-text { @apply text-gray-100 dark:text-gray-500; }
+    .light-text { @apply text-gray-100 dark:text-gray-900; }
     .dark-text { @apply text-gray-900 dark:text-gray-100; }
     .light-text-interactive {
-        @apply text-gray-100 dark:text-gray-500;
+        @apply text-gray-100 dark:text-gray-800;
         transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
 
         &:hover,
         &:focus { @apply cursor-pointer text-white dark:text-gray-400; }
     }
     .dark-text-interactive {
-        @apply text-gray-900 dark:text-gray-100;
+        @apply text-gray-900 ;
         transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
 
         &:hover,
@@ -159,8 +161,4 @@
         @apply absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover;
     }
 
-    .shrink-pulse {
-        @apply transition duration-1000 ease-in-out;
-        transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
-    }
 }

@@ -3,13 +3,14 @@ class ArticlesController < ApplicationController
 
   def index
     query = Article.order(created_at: :desc)
-    query = Article.where(categories: {name: params[:category]}) if params[:category].present?
+    query = query.joins(:categories).where(categories: { name: params[:category]}) if params[:category].present?
 
     @pagy, @articles = pagy(query, items: 10)
   end
 
   def show
     @article = Article.find(params[:id])
+    @pagy, @comments = pagy(@article.comments.eager_load(:commenter).order(created_at: :desc), items: 10)
   end
 
   def show_card

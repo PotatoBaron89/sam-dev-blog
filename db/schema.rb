@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_16_075023) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_18_221522) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,32 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_16_075023) do
     t.index ["category_id"], name: "index_category_article_joins_on_category_id"
   end
 
+  create_table "comment_replies", force: :cascade do |t|
+    t.bigint "comment_id", null: false
+    t.bigint "commenter_id", null: false
+    t.text "body"
+    t.boolean "archived", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_comment_replies_on_comment_id"
+    t.index ["commenter_id"], name: "index_comment_replies_on_commenter_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "commentable_type", null: false
+    t.integer "commentable_id", null: false
+    t.bigint "commenter_id", null: false
+    t.text "body"
+    t.boolean "archived", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "featured", default: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_archived", where: "(archived = true)"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", where: "(archived = false)"
+    t.index ["commenter_id"], name: "index_comments_archived_commenter", where: "(archived = true)"
+    t.index ["commenter_id"], name: "index_comments_on_commenter_id", where: "(archived = false)"
+  end
+
   create_table "favourited_articles", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "article_id", null: false
@@ -87,6 +113,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_16_075023) do
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_favourited_articles_on_article_id"
     t.index ["user_id"], name: "index_favourited_articles_on_user_id"
+  end
+
+  create_table "news_letter_subscriptions", force: :cascade do |t|
+    t.string "email", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -127,6 +159,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_16_075023) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "category_article_joins", "articles"
   add_foreign_key "category_article_joins", "categories"
+  add_foreign_key "comment_replies", "comments"
+  add_foreign_key "comment_replies", "users", column: "commenter_id"
+  add_foreign_key "comments", "users", column: "commenter_id"
   add_foreign_key "favourited_articles", "articles"
   add_foreign_key "favourited_articles", "users"
   add_foreign_key "user_roles", "roles"

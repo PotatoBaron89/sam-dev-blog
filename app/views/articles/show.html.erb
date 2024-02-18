@@ -1,8 +1,9 @@
 
+<%= turbo_frame_tag "article-#{@article.id}",
+  data: { turbo_action: 'advance'},
+  class: "relative isolate flex flex-col gap-3 lg:flex-row rounded-xl shadow p-1" do %>
 
-<%= turbo_frame_tag "article-#{@article.id}", class: "relative isolate flex flex-col gap-3 lg:flex-row rounded-xl shadow p-1" do %>
-
-  <div class="relative bg-form my-3 p-3 pb-12 ml-8 min-h-96">
+  <div class="rounded-xl relative bg-form my-3 p-3 pb-12 ml-8 min-h-96">
     <!--    Back Button-->
     <%= link_to show_card_article_path(@article), class: "absolute top-5 right-5 rounded-full text-white w-12 h-12  flex justify-center inline-flex items-center justify-center p-4 px-6 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-purple-500 rounded-full shadow-md group" do %>
       <span class="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-purple-500 group-hover:translate-x-0 ease">
@@ -15,39 +16,65 @@
     <% end %>
 
     <!--    Article Content-->
-    <div class="flex flex-row justify-around w-full">
-      <h3 class="">
-        <%= @article.name %>
-      </h3>
+    <section class="relative pb-16">
+      <div class="flex flex-row justify-around w-full">
+        <h3 class="">
+          <%= @article.name %>
+        </h3>
 
-      <div class="text-sm text-gray-300 font-semibold">
-        <%= @article.created_at.strftime("%d/%m/%Y") %>
-      </div>
-    </div>
-
-    <% if current_user&.admin? %>
-      <div class="absolute bottom-3 right-3 flex flex-row justify-end gap-3 w-full">
-        <div class="px-2 flex gap-2 rounded-xl ">
-          <%= link_to "Edit", edit_article_path(@article), class: "btn-primary min-w-32 text-center" %>
-        </div>
-
-        <div class="px-2 flex gap-2 rounded-xl ">
-          <%= button_to "Favourite", favourite_article_path(@article), class: "btn-primary min-w-32 text-center" %>
+        <div class="text-sm text-gray-300 font-semibold">
+          <%= @article.created_at.strftime("%d/%m/%Y") %>
         </div>
       </div>
-    <% end %>
 
+      <% if current_user&.admin? %>
+        <div class="absolute bottom-3 right-3 flex flex-row justify-end gap-3 w-full">
+          <div class="px-2 flex gap-2 rounded-xl ">
+            <%= link_to "Edit", edit_article_path(@article), data: { turbo_action: "advance" }, class: "btn-primary min-w-32 text-center" %>
+          </div>
 
-    <div>
-      <% @article.categories.each do |category| %>
-        <span class="<%= category.colour %> text-white p-1 rounded">
-          <%= category.name %>
-        </span>
+          <div class="px-2 flex gap-2 rounded-xl ">
+            <!--            Todo: make this a hamburger menu-->
+            <%= button_to "Favourite", favourite_article_path(@article), class: "btn-primary min-w-32 text-center" %>
+          </div>
+        </div>
       <% end %>
-    </div>
 
-    <p>
-      <%= @article.content %>
-    </p>
+
+      <div>
+        <% @article.categories.each do |category| %>
+          <span class="<%= category.colour %> text-white p-1 rounded">
+            <%= category.name %>
+          </span>
+        <% end %>
+      </div>
+
+      <p>
+        <%= @article.content %>
+      </p>
+    </section>
+
+    <hr class="mt-12">
+    <h4 class="font-normal mb-2">
+      Comments
+    </h4>
+
+      <%= form_for(Comment.new, data: { turbo_frame: 'comments', turbo_action: "advance" }) do |f| %>
+        <div class="flex flex-col gap-3">
+          <%= f.hidden_field :commentable_type, value: "Article" %>
+          <%= f.hidden_field :commentable_id, value: @article.id %>
+
+          <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
+            <div class="w-full flex items-center justify-between px-3 py-2 border-b dark:border-gray-600">
+              <div class="w-full flex flex-wrap items-center divide-gray-200 sm:divide-x sm:rtl:divide-x-reverse dark:divide-gray-600">
+                <%= f.text_area :body, class: "w-full px-4 py-2 bg-white rounded-b-lg dark:bg-gray-800" %>
+              </div>
+            </div>
+          </div>
+          <%= f.submit "Add Comment", data: { turbo_action: "append", turbo_frame: "comments" }, class: "btn-primary w-fit" %>
+        </div>
+      <% end %>
+
+    <%= render partial: 'components/comments', locals: { comments: @comments } %>
   </div>
 <% end %>

@@ -1,7 +1,7 @@
 <header class="bg-gray-900 text-white shadow rounded-xl m-5">
   <div class="flex flex-col justify-center items-center">
     <div class="relative w-full">
-      <h1 class="mb-3 p-2 text-center">Dev Blog</h1>
+      <h1 class="mb-3 p-2 text-center text-blue-300">Blog</h1>
       <div class="absolute right-0 top-0 p-3 font-bold">
         Samuel O'Donnell
       </div>
@@ -10,7 +10,7 @@
     <nav class="flex flex-wrap justify-between w-full gap-3 rounded-full m-3">
       <div class="flex flex-start gap-2 text-yellow-200">
         <div class="rounded-full m-3  h-6 flex justify-center items-center">
-          <%= link_to "Home", root_path, class: "btn-panel-primary rounded-full" %>
+          <%= link_to "Home", root_path, class: "btn-panel-primary text-gray-100 rounded-full" %>
         </div>
         <div class="rounded-full m-3 btn-panel-primary h-6 flex justify-center items-center">
           <%= render partial: "components/dropdown_button", locals: {
@@ -22,7 +22,7 @@
       <div class="rounded-full flex flex-start">
         <% top_nav_account_elements.each do |element| %>
           <div class="rounded-full m-3 text-gray-100 h-6 flex justify-center items-center">
-            <%= button_to element[:name], element[:path], method: (element[:method] || :get) %>
+            <%= button_to element[:name], element[:path], method: (element[:method] || :get), class: "btn-panel-primary rounded-full text-gray-100" %>
           </div>
         <% end %>
       </div>
