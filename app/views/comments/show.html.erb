@@ -1,2 +1,1 @@
-<%= render partial: 'comments/comment', locals: { comment: @comment } %>
-
+<%= render(Comments::CommentComponent.new(comment: @comment)) %>

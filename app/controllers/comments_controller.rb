@@ -14,9 +14,7 @@ class CommentsController < ApplicationController
       flash[:notice] = 'Comment successfully created'
 
       respond_to do |format|
-        # format.turbo_stream { render turbo_stream: turbo_stream.append(comment, partial: 'comments/comments', locals: { comments: comment }) }
         format.turbo_stream { render turbo_stream: turbo_stream.prepend('comments', comment) }
-        # format.turbo_stream { render turbo_stream: turbo_stream.prepend(comment), partial: 'comments/comments' }
         format.html         { redirect_to request.referrer }
       end
     else
