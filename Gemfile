@@ -49,8 +49,7 @@ gem "escape_utils"
 gem 'chart-js-rails'                      # https://github.com/coderbydesign/chart-js-rails
 gem 'chartkick'
 gem 'popper_js'                           # https://github.com/glebm/popper_js-rubygem
-gem 'view_component', '~> 3.6'            # https://viewcomponent.org/
-
+gem 'view_component', '~> 3.10'            # https://viewcomponent.org/
 
 group :development, :test do
   gem "debug", platforms: %i[mri windows]
