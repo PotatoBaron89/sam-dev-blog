@@ -1,6 +1,0 @@
-/* bridge--form component */
-[data-bridge-components~="form"]
-[data-controller~="bridge--form"]
-[type="submit"] {
-  display: none;
-}
