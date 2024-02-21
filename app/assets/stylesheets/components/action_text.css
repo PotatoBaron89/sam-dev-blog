@@ -196,4 +196,6 @@
     blockquote.twitter-tweet > a {
         color: #888
     }
+
+    .trix-button { @apply bg-blue-300; }
 }

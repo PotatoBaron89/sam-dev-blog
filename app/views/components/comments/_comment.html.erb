@@ -6,7 +6,7 @@
           <div class="flex-none">
             <%= image_tag avatar_url_for(component.comment.commenter), class: "hidden lg:inline-block h-8 rounded-full mr-2 bg-white rounded-full p-0.5" %>
           </div>
-          <div class="font-medium text-gray-600 dark:text-gray-200 text-sm">
+          <div class="font-medium text-primary-600 dark:text-green-300 text-sm">
             <%= component.comment.commenter_name %>
           </div>
           <% if component.comment.editted? %>
@@ -28,7 +28,7 @@
 
       </div>
 
-      <p class="py-2 px-5 dark:text-gray-200">
+      <p class="py-2 px-5 dark:text-neutral-100">
         <%= component.comment.body %>
       </p>
     </div>

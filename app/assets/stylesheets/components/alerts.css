@@ -12,7 +12,7 @@
     }
 
     .alert-notice {
-        @apply text-cyan-800 border-t-4 border-blue-300 bg-blue-300 dark:text-blue-400 dark:bg-gray-800 dark:border-blue-800;
+        @apply text-cyan-800 border-t-4 border-blue-300 bg-blue-300 dark:text-blue-400 dark:bg-primary-500 dark:border-blue-600;
     }
 
     .alert-warning {

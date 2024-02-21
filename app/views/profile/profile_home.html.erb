@@ -1,12 +1,12 @@
 <%= render PrimaryContainerComponent.new do |content| %>
   <% content.capture_content do %>
-    <section class="bg-content mx-12 mx-auto rounded-xl flex flex-col justify-evenly py-4">
+    <section class="mx-12 mx-auto rounded-xl flex flex-col justify-evenly">
       <h2 class="text-blue-800 dark:text-white text-center mt-3 mb-8">
         Profile
       </h2>
 
       <%= form_with(model: current_user, url: profile_update_path, method: :patch, local: true) do |form| %>
-          <div class="form_container">
+          <div class="form_container rounded-3xl">
             <div class="form_field py-5">
               <%= image_tag avatar_url_for(form.object), class: "rounded-full border-2 border-black cursor-pointer" %>
 

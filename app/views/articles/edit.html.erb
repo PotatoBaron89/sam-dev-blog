@@ -14,24 +14,25 @@
     <div class="flex flex-row justify-around w-full">
       <%= form_with(model: @article, url: article_path, method: :patch, local: true, class: "w-full") do |form| %>
         <section class="bg-form flex flex-col items-center p-1 mx-2">
-          <h1>Edit Article</h1>
+          <h1 class="mb-8">Edit Article</h1>
 
           <div class="w-full flex flex-row gap-5">
             <%= form.label :title %>
-            <%= form.text_field :name, class: "border-2 border-blue-300" %>
+            <%= form.text_field :name, class: "text-input" %>
           </div>
 
-          <div class="w-full flex flex-row gap-5">
-            <%= form.label :card_image %>
-            <%= form.file_field :card_image, class: "border-2 border-blue-300" %>
+          <div class="w-full flex flex-row gap-5 pt-1">
+            <%= form.label :image %>
+            <%= form.file_field :card_image, class: "text-gray-900 dark:text-gray-300" %>
           </div>
 
-          <div class="w-full  justify-between trix-content">
+          <div class="w-full  justify-between ">
+            <%= form.label :article_content %>
             <%= form.rich_text_area :content, class: "border-2 h-72 border-blue-300" %>
           </div>
 
           <div class="flex flex-col p-5">
-            <%= form.submit "Update Article", class: "btn btn-primary p-2" %>
+            <%= form.submit "Update Article", class: "btn btn-primary p-2 dark:btn-outline" %>
           </div>
         </section>
       <% end %>
