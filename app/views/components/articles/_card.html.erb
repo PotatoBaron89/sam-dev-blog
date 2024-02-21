@@ -1,20 +1,20 @@
 <%= turbo_frame_tag "article-#{component.article.id}" do %>
-  <article class="relative isolate flex flex-col gap-3 lg:flex-row rounded-xl shadow p-1">
-    <div class="relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-64 lg:shrink-0">
+  <article class="relative isolate bg-content-tertiary flex flex-col gap-3 lg:flex-row lg:pb-3 pb-12">
+    <div class="relative aspect-[16/9] sm:aspect-[3/1] lg:aspect-square lg:w-64 lg:shrink-0 ">
       <%= image_tag component.article.get_image_url, class: "article-image" %>
 
       <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
     </div>
 
     <% if current_user&.admin? %>
-      <div class="absolute right-8 top-3 px-2 flex gap-2 hover:bg-blue-400 rounded-xl min-w-12">
-        <%= link_to "Edit", edit_article_path(component.article), data: { turbo_action: "advance" }, class: "text-gray-200 drop-shadow-2xl" %>
+      <div class="absolute h-fit right-8 lg:top-3 bottom-3 px-2 flex gap-2 min-w-12">
+        <%= link_to "Edit", edit_article_path(component.article), data: { turbo_action: "advance" }, class: "btn-primary btn-outline" %>
       </div>
     <% end %>
 
     <div>
       <div class="flex items-center gap-x-4 text-xs">
-        <time datetime="2020-03-16" class="text-gray-500">
+        <time datetime="2020-03-16" class="text-gray-500 dark:text-gray-300">
           <%= component.article.created_at.strftime("%d/%m/%Y") %>
         </time>
 
@@ -27,10 +27,10 @@
 
       <div class="group relative max-w-xl mt-3">
         <h3 class="">
-          <%= link_to component.article.name, article_path(component.article), data: { turbo_action: "advance" } %>
+          <%= link_to component.article.name, article_path(component.article), data: { turbo_action: "advance" }, class: "dark:text-white" %>
         </h3>
 
-        <p class="mt-5 text-sm leading-6 text-gray-600">
+        <p class="mt-5 px-3 text-sm leading-6 text-gray-600 dark:text-gray-300">
           TODO: Description. Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel iusto corrupti dicta laboris incididunt.
         </p>
       </div>

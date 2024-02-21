@@ -1,0 +1,29 @@
+
+
+@layer components {
+    .notice {
+        @apply lg:w-1/2 md:w-1/3 bg-green-300 text-white dark:text-gray-900 rounded-xl border-spacing-1 border-2 border-green-200 py-3 px-5 py-1 mb-8 text-center;
+        transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
+    }
+
+    .notice-alert {
+        @apply lg:w-1/2 md:w-1/3 bg-red-300 text-white dark:text-gray-900 rounded-xl border-spacing-1 border-2 border-red-200 py-3 px-5 py-1 mb-8 text-center;
+        transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
+    }
+
+    .alert-notice {
+        @apply text-cyan-800 border-t-4 border-blue-300 bg-blue-300 dark:text-blue-400 dark:bg-gray-800 dark:border-blue-800;
+    }
+
+    .alert-warning {
+        @apply text-yellow-800 border-t-4 border-yellow-300 bg-yellow-50 dark:text-yellow-400 dark:bg-gray-800 dark:border-yellow-800;
+    }
+
+    .alert-danger {
+        @apply text-red-800 border-t-4 border-red-300 bg-red-50 dark:text-red-400 dark:bg-gray-800 dark:border-red-800;
+    }
+
+    .alert-success {
+        @apply text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-gray-800 dark:border-green-800;
+    }
+}

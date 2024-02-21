@@ -45,6 +45,15 @@ class ApplicationComponent
     @view_context.render partial_path, component: self
   end
 
+  def render_content
+    content.html_safe
+  end
+
+  def capture_content(&block)
+    @captured_content = capture(&block)
+    @content = content_tag(:dd, @captured_content)
+  end
+
   def partial_path
     "components/#{component_path}"
   end

@@ -17,4 +17,8 @@ class Article < ApplicationRecord
       self.categories.to_a.first.get_image_url
     end
   end
+
+  def favourited?
+
+  end
 end

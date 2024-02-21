@@ -1,21 +1,21 @@
 <div class="flex flex-col justify-center col-span-3">
   <h2 class="mb-6 text-center">Log in</h2>
 
-  <div class='bg-form flex justify-center mx-12 border-2 border-blue-200 rounded-2xl py-12'>
+  <div class='bg-form flex justify-center border-2 border-blue-200 rounded-2xl py-12'>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
       <%= render partial: "components/forms/email_input", locals: { f: f } %>
       <%= render partial: "components/forms/password_input", locals: { f: f } %>
 
       <% if devise_mapping.rememberable? %>
-        <div class="field rounded-full py-3">
+        <div class="field rounded-full py-3 flex items-center">
           <%= f.check_box :remember_me, class: 'rounded' %>
           <%= f.label :remember_me %>
         </div>
       <% end %>
 
       <div class="actions">
-        <%= f.submit "Log in", class: "btn-primary" %>
+        <%= f.submit "Log in", class: "cursor-pointer btn-primary dark:btn-outline w-full mt-3" %>
       </div>
 
       <div class="field mt-8">

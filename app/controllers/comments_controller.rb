@@ -70,5 +70,7 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = Comment.eager_load(:commenter).find(params[:id])
+    @commentable = @comment.commentable
+    @commenter = @comment.commenter
   end
 end

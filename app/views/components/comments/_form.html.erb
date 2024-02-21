@@ -1,0 +1,15 @@
+<%= form_for(Comment.new, data: { turbo_frame: 'comments', turbo_action: "advance" }) do |f| %>
+  <div class="flex flex-col gap-3">
+    <%= f.hidden_field :commentable_type, value: commentable.class %>
+    <%= f.hidden_field :commentable_id, value: commentable.id %>
+
+    <div class="w-full dark:bg-gray-700 dark:border-gray-600">
+      <div class="w-full flex items-center justify-between">
+        <div class="w-full flex flex-wrap items-center divide-gray-200 sm:divide-x sm:rtl:divide-x-reverse dark:divide-gray-600">
+          <%= f.text_area :body, class: "w-full px-4 py-2 bg-white rounded-b-lg dark:bg-gray-800" %>
+        </div>
+      </div>
+    </div>
+    <%= f.submit "Add Comment", data: { turbo_action: "append", turbo_frame: "comments" }, class: "btn-primary btn-outline dark:btn-outline-white w-fit" %>
+  </div>
+<% end %>

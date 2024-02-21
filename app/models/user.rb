@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  EDITABLE_FIELDS = %i[first_name last_name alias email password password_confirmation location].freeze
+  EDITABLE_FIELDS = %i[first_name last_name alias avatar email password password_confirmation location].freeze
 
   include User::Mentions
   # Include default devise modules. Others available are:

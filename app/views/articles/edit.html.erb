@@ -21,6 +21,11 @@
             <%= form.text_field :name, class: "border-2 border-blue-300" %>
           </div>
 
+          <div class="w-full flex flex-row gap-5">
+            <%= form.label :card_image %>
+            <%= form.file_field :card_image, class: "border-2 border-blue-300" %>
+          </div>
+
           <div class="w-full  justify-between trix-content">
             <%= form.rich_text_area :content, class: "border-2 h-72 border-blue-300" %>
           </div>

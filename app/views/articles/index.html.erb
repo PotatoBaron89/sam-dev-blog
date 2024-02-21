@@ -1,3 +1,12 @@
-<%= turbo_frame_tag "article", class: "flex flex-col gap-3" do %>
-  <%= render(Articles::CardListComponent.new) %>
+
+<%= render PrimaryContainerComponent.new do |content| %>
+  <% content.capture_content do %>
+    <% @articles.each do |article| %>
+      <div class="my-1">
+        <%= render Articles::CardComponent.new(article: article) %>
+      </div>
+    <% end %>
+
+    <%= render(NewsletterComponent.new) %>
+  <% end %>
 <% end %>

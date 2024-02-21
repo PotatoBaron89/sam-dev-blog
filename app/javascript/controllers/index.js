@@ -4,8 +4,9 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
-
 import HistoryController from "./history_controller"
 application.register("history", HistoryController)
+
+import Tooltip_controller from "./tooltip_controller";
+application.register("tooltip", Tooltip_controller)
+
