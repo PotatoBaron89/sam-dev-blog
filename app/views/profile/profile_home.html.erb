@@ -18,22 +18,30 @@
             <div class="flex flex-col w-full justify-between gap-3 py-5">
               <div class="flex flex-row justify-between">
                 <%= form.label :first_name %>
-                <%= form.text_field :first_name, class: "form-control w-2/3", required: true, placeholder: 'John' %>
+                <div class="w-2/3 pr-4">
+                  <%= form.text_field :first_name, class: "form-control w-2/3", required: true, placeholder: 'John' %>
+                </div>
               </div>
 
             <div class="flex flex-row justify-between">
               <%= form.label :last_name %>
-              <%= form.text_field :last_name, class: "form-control w-2/3", required: false, placeholder: 'Smith' %>
+              <div class="w-2/3 pr-4">
+                <%= form.text_field :last_name, class: "form-control w-2/3", required: false, placeholder: 'Smith' %>
+              </div>
             </div>
 
             <div class="flex flex-row justify-between">
               <%= form.label :alias %>
-              <%= form.text_field :alias, class: "form-control w-2/3", required: false, placeholder: 'John' %>
+              <div <%= tooltip("Set a display name / alias that will be used in place of your first name.", delay: 500) %> class="w-2/3 pr-4">
+                <%= form.text_field :alias, class: "form-control w-2/3", required: false, placeholder: 'John' %>
+              </div>
             </div>
 
               <div class="flex flex-row justify-between">
-                <%= form.label :theme, class: "w-64" %>
-                <%= form.select :theme, theme_options, { selected: current_user.theme}, { class: "select w-2/3" } %>
+                <%= form.label :theme %>
+                <div <%= tooltip("Allows you to swap between using light and dark themes", delay: 500) %> class="w-2/3 pr-4">
+                  <%= form.select :theme, theme_options, { selected: current_user.theme}, { class: "select w-2/3" } %>
+                </div>
               </div>
           </div>
 
