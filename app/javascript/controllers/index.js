@@ -10,3 +10,6 @@ application.register("history", HistoryController)
 import Tooltip_controller from "./tooltip_controller";
 application.register("tooltip", Tooltip_controller)
 
+import ThemeController from "./theme_controller"
+application.register("theme", ThemeController)
+
