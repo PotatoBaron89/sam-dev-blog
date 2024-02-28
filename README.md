@@ -1,6 +1,6 @@
 # README
 
-Source code for my professional blog, built using Ruby on Rails.  , and is being built to showcase my skills as a developer.
+Source code for my professional blog, built using Ruby on Rails
 
 ### Licence: MIT
 
