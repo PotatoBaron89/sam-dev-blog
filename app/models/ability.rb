@@ -10,10 +10,12 @@ class Ability
       when 'Admin'
         can :manage, :all
       when 'Registered User'
+        # Articles
         can :read, :article
         can :read, :category, archived: false
         can :read, :user, id: user.id
 
+        # Comments
         can :read, :comment, archived: false
         can :create, :comment, commenter_id: user.id
         can :update, :comment, commenter_id: user.id

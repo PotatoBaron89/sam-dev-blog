@@ -1,8 +1,8 @@
 
-<% unless user_signed_in? && current_user.news_letter_subscriptions.exists? %>
+<%# unless user_signed_in? && current_user.news_letter_subscriptions.exists? %>
   <div class="relative rounded-xl dark:shadow-amber-300 isolate overflow-hidden relative flex flex-col gap-3 lg:flex-row rounded-xl shadow p-1 py-12">
     <div class="flex flex-col justify-center items-center w-full">
-      <h3 class="pt-3 text-3xl font-bold tracking-tight text-emerald-400 sm:text-4xl">
+      <h3 class="pt-3 text-3xl font-bold tracking-tight text-emerald-400 sm:text-4xl text-center">
         Subscribe to my newsletter
       </h3>
 
@@ -37,22 +37,22 @@
       <div class="aspect-[1155/678] w-[72.1875rem] bg-blue-200 opacity-60" style="clip-path: polygon(14.1% 44.1%, 100% 11.6%, 97.5% 26.9%, 05.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 98.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 54.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 34.1% 94.1%)"></div>
     </div>
   </div>
-<% end %>
+<%# end %>
 
-<% if current_user&.admin? %>
-  <div class="relative rounded-xl dark:shadow-blue-400 isolate overflow-hidden relative flex flex-col gap-3 lg:flex-row rounded-xl shadow p-1 py-12">
-    <div class="flex flex-col justify-center items-center w-full">
-      <h4 class="pt-3 text-3xl font-bold tracking-tight text-emerald-400 sm:text-4xl">
-        You are already subscribed to the newsletter
-      </h4>
+<%# if current_user&.admin? %>
+<!--  <div class="relative rounded-xl dark:shadow-blue-400 isolate overflow-hidden relative flex flex-col gap-3 lg:flex-row rounded-xl shadow p-1 py-12">-->
+<!--    <div class="flex flex-col justify-center items-center w-full">-->
+<!--      <h4 class="pt-3 text-3xl font-bold tracking-tight text-emerald-400 sm:text-4xl">-->
+<!--        You are already subscribed to the newsletter-->
+<!--      </h4>-->
 
-      <div class="absolute bg-blue-900 left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6" aria-hidden="true">
-        <div class="aspect-[1155/678] w-[72.1875rem] bg-blue-200 opacity-60" style="clip-path: polygon(14.1% 44.1%, 100% 11.6%, 97.5% 26.9%, 05.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 98.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 54.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 34.1% 94.1%)"></div>
-      </div>
+<!--      <div class="absolute bg-blue-900 left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6" aria-hidden="true">-->
+<!--        <div class="aspect-[1155/678] w-[72.1875rem] bg-blue-200 opacity-60" style="clip-path: polygon(14.1% 44.1%, 100% 11.6%, 97.5% 26.9%, 05.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 98.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 54.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 34.1% 94.1%)"></div>-->
+<!--      </div>-->
 
-      <div class="absolute top-3 right-3 text-sm text-gray-100">
-        (You are seeing this because you are an admin user. Normal users will not see this message.)
-      </div>
-    </div>
-  </div>
-<% end %>
+<!--      <div class="absolute top-3 right-3 text-sm text-gray-100">-->
+<!--        (You are seeing this because you are an admin user. Normal users will not see this message.)-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<%# end %>

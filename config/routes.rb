@@ -23,6 +23,17 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :categories
+
+  # resources :products do
+  #   resources :magics, controller: "products/magics"
+  #   resources :reviews do
+  #     member do
+  #       get :review
+  #     end
+  #   end
+  #   resources :comments, module: :products
+
   resources :comments do
     member do
       post 'archive'

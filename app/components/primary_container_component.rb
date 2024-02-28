@@ -6,6 +6,7 @@ class PrimaryContainerComponent < ApplicationComponent
   attr_reader :collection, :pages, :block
 
   def initialize(collection: [], pages: nil, &block)
+    # TODO: collection not implemented yet
     @collection = collection
     @pages = pages
     @block = block
